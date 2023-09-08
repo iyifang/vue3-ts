@@ -1,0 +1,17 @@
+.sidebar {
+    width: 250px;
+    background-color: #545c64;
+    height: 100%;
+}
+
+.el-menu {
+    border-right: 0;
+
+    .svg-icon {
+        margin-right: 6px;
+
+    }
+}
+.is-open-menu{
+    width: 50px !important;
+}
