@@ -27,5 +27,17 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
+  },
+  // 本文相关配置
+  css: {
+    // css预处理器
+    preprocessorOptions: {
+      scss: {
+        // 定义全局的scss变量
+        // 给导入的路径最后加上 ;
+        additionalData: `@import '@/style/global.scss';`
+      }
+    }
   }
+
 })
