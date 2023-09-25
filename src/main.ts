@@ -7,6 +7,7 @@ import  { initRouter } from '@/router/index'
 import 'nprogress/nprogress.css'
 import '@/style/index.scss'
 
+
 import '@/router/permission'
 import 'virtual:svg-icons-register'
 
@@ -14,7 +15,5 @@ const app = createApp(App)
 
 usePinia(app)
 initRouter(app)
-
-
 
 app.mount('#app')

@@ -1,17 +1,15 @@
 <template>
     <div>
-        <el-button @click="logout">退出登录</el-button>
+        {{ collapse }}
     </div>
 </template>
 
 <script lang="ts" setup>
-import { useUserStore } from '@/store/modules/user'
-import { useRouter } from 'vue-router';
-const userStore = useUserStore()
-const router = useRouter()
+import { useAppStore } from '@/store/modules/app'
+import { storeToRefs } from 'pinia'
+const appStore = useAppStore()
 
-const logout = ()=>{
-    userStore.logout()
-    router.push('/login')
-}
+const appStoreData = storeToRefs(appStore)
+const collapse = appStoreData.collapse.value
+
 </script>

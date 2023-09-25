@@ -23,6 +23,11 @@ const baseRouter = [
     {
       path: '/',
       redirect: '/home/index',
+      hidden: true,
+    },
+    {
+      path: '/home/index',
+      redirect: '/home/index',
       name: 'Home',
       meta: {
         title: '首页',
