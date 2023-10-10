@@ -12,6 +12,7 @@ const whiteList = ['/login']
 
 /* 每个if中必须有一个next()或者retur true;放行,否则会死循环 */
 router.beforeEach(async ( to, _, next )=>{
+    nprogress.start()
     const token = getToken()
     if(token){
         if(whiteList.includes(to.path)){
@@ -34,12 +35,14 @@ router.beforeEach(async ( to, _, next )=>{
                 next({path: '/login'})
             }
         }
+        nprogress.done();
     }else{
         if(whiteList.includes(to.path)){
             next()
         }else{
             next({path: '/login'})
         }
+        nprogress.done();
     }
 
 })

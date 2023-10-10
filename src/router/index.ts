@@ -34,7 +34,7 @@ const baseRouter = [
          roles: [1],
          icon: 'home'
       },
-      showParent: false,
+      showParent: true,
       component: Layout,
       children: [
         {
@@ -44,7 +44,7 @@ const baseRouter = [
             roles: [1],
             icon: 'home'
           },
-          component: () => import('@/view/home/index.vue')
+          component: () => import('@/view/home/index.vue'),
         },
       ]
     }

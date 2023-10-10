@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import { DataInfo } from '@/utils/auth'
 import { removeToken, setToken } from '@/utils/cookie'
+import { login } from '@/Api/index'
+
 
 export const useUserStore = defineStore('user',{
     state: ()=>{
@@ -10,12 +11,13 @@ export const useUserStore = defineStore('user',{
         }
     },
     actions: {
-        login(user: DataInfo){
-            return new Promise((resolve)=>{
-                this.userInfo = user
-                this.roles = user.roles ? user.roles : []
-                setToken(user.token)
-                resolve(user)
+        login(user:any){
+            return new Promise(async(resolve)=>{
+                let data = await login({ username:user.username.trim(), password: user.password.trim() })
+                this.roles = data.roles ? data.roles : []
+                this.userInfo = data
+                setToken(data.token)
+                resolve(data)
             })
         },
         logout(){

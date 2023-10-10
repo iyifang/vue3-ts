@@ -18,19 +18,9 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { useUserStore } from '@/store/modules/user'
-import { useRouter } from 'vue-router';
 import type { FormInstance, FormRules } from 'element-plus'
-import { login, test } from '@/Api/index'
-
-const userStore = useUserStore()
-const router = useRouter()
-const userInfo = {
-    username: '王花花',
-    sex: 0,
-    token: 'token',
-    roles: [0, 1]
-}
+import { useRouter } from 'vue-router';
+import { useUserStore } from "@/store/modules/user"
 
 const formSize = ref('default')
 const ruleFormRef = ref<FormInstance>()
@@ -53,21 +43,19 @@ const rules = reactive<FormRules<RuleForm>>({
 })
 
 
-/* const submitForm = async (e) => {
-    await userStore.login(userInfo)
-    router.push('/')
-} */
+const router = useRouter()
+const userStore = useUserStore()
 
-const submitForm = async (formEl: FormInstance | undefined)=>{
+const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
-    await formEl.validate((valid, fields) => {
-    if (valid) {
-        let { username, password } = ruleForm
-        let res = test()
-    } else {
-      console.log('error submit!', fields)
-    }
-  })
+    await formEl.validate(async (valid, fields) => {
+        if (valid) {
+            await userStore.login(ruleForm)
+            router.push('/')
+        } else {
+            console.log('error submit!', fields)
+        }
+    })
 }
 
 

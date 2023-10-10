@@ -1,6 +1,6 @@
 <template>
     <template v-if="!route.hidden">
-        <template v-if="(!route.children || route.children.length == 1) && !route.showParent">
+        <template v-if="!route.children || route.showParent">
             <el-menu-item :index="route.path" @click="toPath">
                 <svg-icon :icon-class="route.meta.icon"></svg-icon>
                 <template #title>

@@ -1,12 +1,12 @@
 import request from '@/utils/request'
 
 interface loginData {
-    name: string
+    username: string
     password: string
 }
 
 const login = (data: loginData)=>{
-    return request.post('/login',data)
+    return request.post('/users/login',data)
 }
 
 const test = ()=>{

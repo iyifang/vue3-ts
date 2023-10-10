@@ -51,6 +51,7 @@ const leave = () => {
     height: 40px;
     display: flex;
     align-items: center;
+    padding: 5px 0;
 
     .tabs {
         display: flex;
